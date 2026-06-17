@@ -1,0 +1,22 @@
+{
+  "//": "Add this under \"mcpServers\" in claude_desktop_config.json (Claude Desktop) or your MCP client config. Replace the cwd path and the credential values.",
+  "mcpServers": {
+    "sanas-sdk": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/absolute/path/to/sanas-mcp-server",
+        "run",
+        "sanas-mcp"
+      ],
+      "env": {
+        "SANAS_REMOTE_ENDPOINT": "your.remote.endpoint.com",
+        "SANAS_ACCOUNT_ID": "your_account_id",
+        "SANAS_ACCOUNT_SECRET": "your_account_secret",
+        "SANAS_SECURE_MEDIA": "true",
+        "SANAS_DEFAULT_MODEL": "ST_NC3.0",
+        "SANAS_DEFAULT_SAMPLE_RATE": "16000"
+      }
+    }
+  }
+}

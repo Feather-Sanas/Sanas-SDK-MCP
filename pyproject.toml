@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sanas-mcp-server"
+version = "0.1.0"
+description = "Model Context Protocol (MCP) server for the Sanas Speech AI SDK (sanas_remote_sdk)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Sanas" }]
+keywords = ["mcp", "sanas", "speech", "noise-cancellation", "audio"]
+
+dependencies = [
+    "mcp>=1.2.0",
+    "python-dotenv>=1.0.0",
+]
+
+# NOTE: the Sanas SDK connector (`sanas_remote_sdk`) is a private, platform-specific
+# native wheel delivered in your Sanas onboarding package. It is NOT on PyPI and is
+# intentionally not declared here. Install it separately into the same interpreter:
+#     pip install sanas_remote_sdk-<ver>-<py>-<platform>.whl
+# The offline tools work without it; the live tools require it for the host platform.
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sanas-mcp = "sanas_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sanas_mcp"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
